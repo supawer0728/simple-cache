@@ -1,4 +1,4 @@
-package com.parfait.study.simplecache.config;
+package com.parfait.study.simplecache.config.quarterfail;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.cache.RedisCache;

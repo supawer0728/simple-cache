@@ -1,0 +1,22 @@
+<config
+        xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
+        xmlns='http://www.ehcache.org/v3'>
+    <service>
+        <jsr107:defaults>
+            <jsr107:cache name="person" template="person-template"/>
+        </jsr107:defaults>
+    </service>
+
+    <cache alias="person">
+        <expiry>
+            <ttl unit="seconds">10</ttl>
+        </expiry>
+        <resources>
+            <heap unit="MB">10</heap>
+        </resources>
+    </cache>
+
+    <cache-template name="person-template">
+        <heap unit="MB">10</heap>
+    </cache-template>
+</config>

@@ -29,6 +29,8 @@ dependencies {
         exclude group: 'io.lettuce', module: 'lettuce-core'
     }
     compile('redis.clients:jedis')
+    compile('org.ehcache:ehcache')
+    compile('javax.cache:cache-api')
     compile('org.springframework.boot:spring-boot-starter-web')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')

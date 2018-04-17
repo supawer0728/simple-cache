@@ -4,12 +4,14 @@ import com.parfait.study.simplecache.person.domain.Person;
 import com.parfait.study.simplecache.person.domain.PersonRepository;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@CacheConfig(cacheNames = "person")
 public class PersonService {
 
     private final PersonRepository personRepository;
@@ -18,13 +20,13 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    @CachePut(cacheNames = "person", key = "#person.id", unless = "#result.id != null")
+    @CachePut(key = "#person.id", unless = "#result.id != null")
     public Person save(Person person) {
         log.info("save() called");
         return personRepository.save(person);
     }
 
-    @Cacheable(cacheNames = "person")
+    @Cacheable
     public Person get(@NonNull Long id) {
         log.info("get(Long) called");
         return personRepository.findOne(id);

@@ -1,0 +1,5 @@
+spring:
+  cache:
+    jcache:
+      provider: org.ehcache.jsr107.EhcacheCachingProvider
+      config: classpath:ehcache.xml

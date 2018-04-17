@@ -1,4 +1,4 @@
-package com.parfait.study.simplecache.config;
+package com.parfait.study.simplecache.config.quarterfail;
 
 import lombok.NonNull;
 import org.springframework.cache.Cache;
