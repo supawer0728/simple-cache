@@ -10,7 +10,6 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 
@@ -27,15 +26,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
-        JedisConnectionFactory factory = new JedisConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort));
-        return factory;
-    }
-
-    @Bean
-    public RedisTemplate redisTemplate() {
-        RedisTemplate redisTemplate = new RedisTemplate();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
+        return new JedisConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort));
     }
 
     @Bean
