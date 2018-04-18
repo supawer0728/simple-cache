@@ -9,7 +9,7 @@
 
     <cache alias="person">
         <expiry>
-            <ttl unit="seconds">10</ttl>
+            <ttl unit="millis">100</ttl>
         </expiry>
         <resources>
             <heap unit="MB">10</heap>

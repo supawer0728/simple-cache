@@ -1,6 +1,7 @@
 package com.parfait.study.simplecache.config;
 
 import com.parfait.study.simplecache.config.chaincache.ChainedCacheManager;
+import com.parfait.study.simplecache.config.hystrixcache.HystrixCacheManager;
 import com.parfait.study.simplecache.config.logcache.LoggingCacheManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
@@ -52,7 +53,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
         builder.cacheDefaults(defaultConfig);
 
-        return new LoggingCacheManager(builder.build(), "Global-Cache");
+        return new HystrixCacheManager(new LoggingCacheManager(builder.build(), "Global-Cache"));
     }
 
     @Bean
